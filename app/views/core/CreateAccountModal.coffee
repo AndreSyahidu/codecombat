@@ -5,6 +5,7 @@ forms = require 'core/forms'
 User = require 'models/User'
 application  = require 'core/application'
 Classroom = require 'models/Classroom'
+errors = require 'core/errors'
 
 module.exports = class AuthModal extends ModalView
   id: 'create-account-modal'
@@ -15,6 +16,7 @@ module.exports = class AuthModal extends ModalView
     'submit form': 'onSubmitForm'
     'keyup #name': 'onNameChange'
     'click #gplus-login-button': 'onClickGPlusLoginButton'
+    'click #login-gplus-btn': 'onClickLoginGPlusButton'
     'click #facebook-login-btn': 'onClickFacebookLoginButton'
     'click #close-modal': 'hide'
     
@@ -48,7 +50,6 @@ module.exports = class AuthModal extends ModalView
     @$('#gplus-login-btn').attr('disabled', false)
 
   onFacebookAPILoaded: ->
-    console.log 'facebook api loaded?'
     @$('#facebook-login-btn').attr('disabled', false)
 
     
@@ -115,15 +116,7 @@ module.exports = class AuthModal extends ModalView
         @newUser.unset 'name'
         return @createUser()
       return forms.applyErrorsToForm(@$el, [jqxhr.responseJSON])
-
-    # TODO: Come up with a better way to handle generic errors like this
-    noty({
-      text: jqxhr.responseText or 'Unknown error'
-      layout: 'topCenter'
-      type: 'error'
-      killer: false,
-      dismissQueue: true
-    })
+    errors.showNotyNetworkError(jqxhr)
 
   onUserCreated: ->
     Backbone.Mediator.publish "auth:signed-up", {}
@@ -146,10 +139,36 @@ module.exports = class AuthModal extends ModalView
     @$('#gplus-login-btn .sign-in-blurb').text($.i18n.t('signup.creating')).attr('disabled', true)
 
   onGPlusPersonLoaded: (@gplusAttrs) ->
+    @existingUser = new User()
+    @existingUser.fetchGPlusUser(@gplusAttrs.gplusID, application.gplusHandler.accessToken.access_token)
+    @existingUser.once 'sync', @onceExistingUserSync, @
+    @existingUser.once 'error', @onceExistingUserError, @
+
+  onceExistingUserSync: ->
+    @$('#email-password-row').remove()
+    @$('#gplus-account-exists-row').toggleClass('hide')
+
+  onceExistingUserError: ->
     @$('#email-password-row').remove()
     @$('#gplus-logged-in-row').toggleClass('hide')
 
-    
+  onClickLoginGPlusButton: ->
+    # TODO: Come up with a better way to login with a gplusID
+    @newUser = new User(@gplusAttrs)
+    @newUser.set('_id', me.id)
+    options = {
+      url: "/db/user?gplusID=#{@gplusAttrs.gplusID}&gplusAccessToken=#{application.gplusHandler.accessToken.access_token}"
+      type: 'PUT'
+    }
+    @newUser.save(null, options)
+    @newUser.once 'sync', -> window.location.reload()
+    @newUser.once 'error', @onceLoginGPlusError, @
+    @$('#login-gplus-btn').text('Logging In').attr('disabled', true)
+
+  onceLoginGPlusError: (user, jqxhr) ->
+    @$('#login-gplus-btn').text('Log in now.').attr('disabled', false)
+    errors.showNotyNetworkError(jqxhr)
+
   # Facebook
     
   onClickFacebookLoginButton: ->

@@ -96,14 +96,12 @@ module.exports = GPlusHandler = class GPlusHandler extends CocoClass
     console.log 'logged in!', e
 
   loginCodeCombat: (options={}) ->
-    @reloadOnLogin
+    @reloadOnLogin = options.reloadOnLogin
     # email and profile data loaded separately
-    console.log 'login codecombat begin'
     gapi.client.load('plus', 'v1', =>
       gapi.client.plus.people.get({userId: 'me'}).execute(@onPersonReceived))
 
   onPersonReceived: (r) =>
-    console.log 'r', r
     attrs = {}
     for gpProp, userProp of userPropsToSave
       keys = gpProp.split('.')

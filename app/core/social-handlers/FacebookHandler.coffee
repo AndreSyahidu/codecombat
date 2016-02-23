@@ -28,7 +28,7 @@ module.exports = FacebookHandler = class FacebookHandler extends CocoClass
         @loggedIn = true
         break
 
-    trigger 'logged-into-facebook'
+    @trigger 'logged-into-facebook'
 #    if @waitingForLogin and @loggedIn
 #      @fetchMeForLogin()
 
