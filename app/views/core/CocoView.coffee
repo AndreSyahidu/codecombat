@@ -91,8 +91,9 @@ module.exports = class CocoView extends Backbone.View
   didReappear: ->
     # the router brings back this view from the cache
     @delegateEvents()
+    wasHidden = @hidden
     @hidden = false
-    @listenToShortcuts()
+    @listenToShortcuts() if wasHidden
     view.didReappear() for id, view of @subviews
 
   # View Rendering
@@ -441,8 +442,8 @@ module.exports = class CocoView extends Backbone.View
     slider
     
   scrollToLink: (link, speed=300) ->
-    scrollTo = $(link).offset().top + $('#page-container')[0].scrollTop
-    $('#page-container').animate({ scrollTop: scrollTo }, speed)
+    scrollTo = $(link).offset().top
+    $('html, body').animate({ scrollTop: scrollTo }, speed)
 
   toggleFullscreen: (e) ->
     # https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode?redirectlocale=en-US&redirectslug=Web/Guide/DOM/Using_full_screen_mode
