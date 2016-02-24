@@ -17,7 +17,7 @@ module.exports.setup = (app) ->
   app.post('/db/article/:handle/watchers', mw.patchable.joinWatchers(Article))
   app.delete('/db/article/:handle/watchers', mw.patchable.leaveWatchers(Article))
   
-  app.get('/db/user', mw.users.findByGPlusID)
+  app.get('/db/user', mw.users.fetchByGPlusID, mw.users.fetchByFacebookID)
 
   app.get '/db/products', require('./db/product').get
 

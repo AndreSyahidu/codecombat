@@ -93,9 +93,8 @@ module.exports = GPlusHandler = class GPlusHandler extends CocoClass
     @accessToken = e
     @trigger 'logged-in'
     @trigger 'logged-into-google'
-    console.log 'logged in!', e
 
-  loginCodeCombat: (options={}) ->
+  loadPerson: (options={}) ->
     @reloadOnLogin = options.reloadOnLogin
     # email and profile data loaded separately
     gapi.client.load('plus', 'v1', =>
