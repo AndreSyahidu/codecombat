@@ -1,13 +1,13 @@
 module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Indonesian", translation:
   home:
-#    slogan: "Learn to Code by Playing a Game"
+    slogan: "Belajar Code dengan Bermain"
     no_ie: "Maaf, CodeCombat tidak bisa dijalankan pada Internet Explorer 8 dan sebelumnya" # Warning that only shows up in IE8 and older
     no_mobile: "Maaf. CodeCombat tidak dibuat untuk perangkat mobile" # Warning that shows up on mobile devices
     play: "Play" # The big play button that opens up the campaign view.
-#    play_campaign_version: "Play Campaign Version" # Shows up under big play button if you only play /courses
+    play_campaign_version: "Mainkan versi Campaign" # Shows up under big play button if you only play /courses
     old_browser: "Uh oh, Maaf. Versi broser anda terlalu lama " # Warning that shows up on really old Firefox/Chrome/Safari
     old_browser_suffix: "Anda bisa mencoba, tapi mungkin tidak akan berjalan."
-#    ipad_browser: "Bad news: CodeCombat doesn't run on iPad in the browser. Good news: our native iPad app is awaiting Apple approval."
+    ipad_browser: "Berita buruk: CodeCombat tidak bisa berjalan pada browser ipad. Berita baik: Aplikasi ipad sedang menunggu persetujuan apple store."
     campaign: "Campaign"
     for_beginners: "Pemula"
     multiplayer: "Multiplayer" # Not currently shown on home page
@@ -17,7 +17,7 @@ module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Ind
   nav:
     play: "Levels" # The top nav bar entry where players choose which levels to play
     community: "Komunitas"
-#    courses: "Courses"
+    courses: "Courses"
     editor: "Editor"
     blog: "Blog"
     forum: "Forum"
@@ -27,13 +27,13 @@ module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Ind
     code: "Code"
     admin: "Admin" # Only shows up when you are an admin
     home: "Home"
-#    contribute: "Contribute"
+    contribute: "Kontribusi"
     legal: "Legal"
-#    about: "About"
+    about: "Tentang"
     contact: "Kontak"
-    twitter_follow: "Follow"
-#    teachers: "Teachers"
-#    careers: "Careers"
+    twitter_follow: "Ikuti"
+    teachers: "Guru"
+    careers: "Karir"
 
   modal:
     close: "Tutup"
@@ -43,12 +43,12 @@ module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Ind
     page_not_found: "Alamat tidak ditemukan"
 
   diplomat_suggestion:
-#    title: "Help translate CodeCombat!" # This shows up when a player switches to a non-English language using the language selector.
-#    sub_heading: "We need your language skills."
+    title: "Bantu untuk menterjemahkan!" # This shows up when a player switches to a non-English language using the language selector.
+    sub_heading: "Kami butuh keahlianmu."
     pitch_body: "Kami mengembangkan CodeCombat dalam bahasa Inggris, tapi kami sudah memiliki pemain di seluruh dunia. Banyak dari mereka ingin bermain di Indonesia, tetapi tidak berbicara bahasa Inggris, jadi jika Anda dapat berbicara, silakan mempertimbangkan untuk mendaftar untuk menjadi Diplomat dan membantu menerjemahkan kedua situs CodeCombat dan semua tingkatan ke Indonesia."
     missing_translations: "Hingga kami bisa menerjemahkan semuanya ke dalam bahasa Indonesia, Anda akan melihat bahasa Inggris ketika Indonesia belum tersedia."
-#    learn_more: "Learn more about being a Diplomat"
-#    subscribe_as_diplomat: "Subscribe as a Diplomat"
+    learn_more: "Pelajari selengkapnya untuk menjadi Diplomat"
+    subscribe_as_diplomat: "Berlangganan sebagai Diplomat"
 
   play:
 #    play_as: "Play As" # Ladder page
@@ -59,7 +59,7 @@ module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Ind
 #    items: "Items" # Tooltip on item shop button from /play
 #    unlock: "Unlock" # For purchasing items and heroes
     confirm: "Konfirmasi"
-#    owned: "Owned" # For items you own
+    owned: "Owned" # For items you own
     locked: "Terkunci"
 #    purchasable: "Purchasable" # For a hero you unlocked but haven't purchased
     available: "Tersedia"
@@ -68,12 +68,12 @@ module.exports = nativeDescription: "Bahasa Indonesia", englishDescription: "Ind
 #    achievements: "Achievements" # Tooltip on achievement list button from /play
     account: "Akun" # Tooltip on account button from /play
     settings: "Pengaturan" # Tooltip on settings button from /play
-#    poll: "Poll" # Tooltip on poll button from /play
-#    next: "Next" # Go from choose hero to choose inventory before playing a level
-#    change_hero: "Change Hero" # Go back from choose inventory to choose hero
-#    buy_gems: "Buy Gems"
+    poll: "Poll" # Tooltip on poll button from /play
+    next: "Lanjut" # Go from choose hero to choose inventory before playing a level
+    change_hero: "Ganti Hero" # Go back from choose inventory to choose hero
+    buy_gems: "Beli Berlian"
 #    subscription_required: "Subscription Required"
-#    anonymous: "Anonymous Player"
+    anonymous: "Pengguna Anonymous"
 #    level_difficulty: "Difficulty: "
 #    play_classroom_version: "Play Classroom Version" # Choose a level in campaign version that you also can play in one of your courses
 #    campaign_beginner: "Beginner Campaign"
